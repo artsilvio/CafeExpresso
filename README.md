@@ -59,7 +59,7 @@ Tecnologias Utilizadas
 - Git e GitHub  
 - IDE VS Code
 
-Integrantes
+Autores
 - Sílvio Aparecido Rêgo Silva  
 - Marcos Silva Souza
 
