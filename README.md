@@ -1,4 +1,4 @@
-Café Expresso
+Café Expresso!
 
 Descrição do Projeto
 O "Café Expresso" é um sistema de autoatendimento desenvolvido para uma cafeteria de pequeno porte. Seu objetivo é modernizar e agilizar o processo de pedidos, permitindo que os clientes realizem suas compras diretamente em um totem digital, sem a necessidade de enfrentar filas.
