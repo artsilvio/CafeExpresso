@@ -5,6 +5,15 @@ public class Produto {
     private double valorUnitario;
 
     public Produto(String descricao, double valorUnitario) {
+
+        if (descricao == null || descricao.isEmpty()) {
+            throw new IllegalArgumentException("Descrição inválida");
+        }
+
+        if (valorUnitario <= 0) {
+            throw new IllegalArgumentException("Valor não pode ser = a zero ou negativo");
+        }
+
         this.descricao = descricao;
         this.valorUnitario = valorUnitario;
     }
