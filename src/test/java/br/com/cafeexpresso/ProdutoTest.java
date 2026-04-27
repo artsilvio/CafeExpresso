@@ -18,7 +18,14 @@ public class ProdutoTest {
     void naoDevePermitirValorNegativo() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Produto("CAFE", -1.0);
+        });
+    }
+
+    @Test
+    void naoDevePermitirValorZero() {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Produto("PAO DE QUEIJO", 0.0);
         });
     }
+
 }
