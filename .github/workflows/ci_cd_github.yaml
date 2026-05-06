@@ -1,0 +1,47 @@
+# Nome do workflow conforme aparecerá na aba "Actions" do seu repositório
+name: Java Unit Test CI
+
+# Define os eventos que disparam a execução deste pipeline
+on:
+  push:
+    # Executa sempre que houver um push na branch principal (main)
+    branches: [ "main" ]
+  pull_request:
+    # Executa sempre que um Pull Request for aberto para a branch principal
+    branches: [ "main" ]
+
+# Variáveis globais acessíveis em todos os jobs deste arquivo
+env:
+  # Corrige o aviso de depreciação forçando o uso do Node.js 24 (padrão em 2026)
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+  # Centraliza a versão do Java para facilitar mudanças futuras
+  JAVA_VERSION: '17'
+
+# Lista de tarefas (jobs) que o GitHub irá executar
+jobs:
+  # Nome do job de compilação e testes
+  build-and-test:
+    # Define o sistema operacional da máquina virtual (Runner) que executará o código
+    runs-on: ubuntu-latest
+
+    # Sequência de comandos que compõem o job
+    steps:
+      # 1. Passo para clonar o seu código do repositório para dentro da máquina virtual
+      - name: Checkout do código fonte
+        uses: actions/checkout@v5
+
+      # 2. Passo para instalar o JDK (Java Development Kit) na máquina
+      - name: Configurar o ambiente Java
+        uses: actions/setup-java@v5
+        with:
+          # Usa a versão definida na variável global acima
+          java-version: ${{ env.JAVA_VERSION }}
+          # Define a distribuição do Java (Temurin é a recomendada pela comunidade)
+          distribution: 'temurin'
+          # Ativa o cache do Maven para acelerar builds futuros baixando menos dependências
+          cache: maven
+
+      # 3. Passo para compilar o código e rodar os testes unitários via Maven
+      - name: Compilar e Executar Testes Unitários
+        # -B (Batch mode) evita logs excessivos; clean remove builds antigos; test executa o JUnit
+        run: mvn -B clean test --file pom.xml
