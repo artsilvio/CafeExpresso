@@ -19,4 +19,19 @@ public class Pedido {
     public List<ItemPedido> getItens() {
         return itens;
     }
+
+    public void adicionarItem(ItemPedido item) {
+        if (item == null) {
+            throw new IllegalArgumentException("O item não pode ser nulo!");
+        }
+        itens.add(item);
+    }
+
+    public double calcularTotal() {
+        double total = 0;
+        for (ItemPedido item : itens) {
+            total += item.calcularSubtotal();
+        }
+        return total;
+    }
 }
