@@ -44,4 +44,16 @@ public class PedidoTest {
         assertEquals(StatusPedido.EM_PREPARO, pedido.getStatus());
     }
 
+    @Test
+    void deveFinalizarPedido() {
+
+        Pedido pedido = new Pedido();
+
+        pedido.pagar();
+        pedido.iniciarPreparo();
+        pedido.finalizar();
+
+        assertEquals(StatusPedido.FINALIZADO, pedido.getStatus());
+    }
+
 }
