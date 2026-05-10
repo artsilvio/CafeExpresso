@@ -67,4 +67,14 @@ public class PedidoTest {
         });
     }
 
+    @Test
+    void naoDeveFinalizarSemEstarEmPreparo() {
+
+        Pedido pedido = new Pedido();
+
+        assertThrows(IllegalStateException.class, () -> {
+            pedido.finalizar();
+        });
+    }
+
 }
