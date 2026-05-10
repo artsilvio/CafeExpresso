@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class PedidoTest {
-    
+
     @Test
     void deveCalcularTotalComSucesso() {
         Pedido pedido = new Pedido();
@@ -13,5 +13,13 @@ public class PedidoTest {
         pedido.adicionarItem(new ItemPedido(cafe, 2));
 
         assertEquals(30.0, pedido.calcularTotal());
+    }
+
+    @Test
+    void pedidoDeveIniciarComoPendente() {
+
+        Pedido pedido = new Pedido();
+
+        assertEquals(StatusPedido.PENDENTE, pedido.getStatus());
     }
 }
