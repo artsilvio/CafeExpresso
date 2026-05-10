@@ -1,6 +1,7 @@
 package br.com.cafeexpresso;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 public class PedidoTest {
@@ -54,6 +55,16 @@ public class PedidoTest {
         pedido.finalizar();
 
         assertEquals(StatusPedido.FINALIZADO, pedido.getStatus());
+    }
+
+    @Test
+    void naoDeveIniciarPreparoSemPagamento() {
+
+        Pedido pedido = new Pedido();
+
+        assertThrows(IllegalStateException.class, () -> {
+            pedido.iniciarPreparo();
+        });
     }
 
 }
