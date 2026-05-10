@@ -32,4 +32,16 @@ public class PedidoTest {
 
         assertEquals(StatusPedido.PAGO, pedido.getStatus());
     }
+
+    @Test
+    void deveAlterarStatusParaEmPreparo() {
+
+        Pedido pedido = new Pedido();
+
+        pedido.pagar();
+        pedido.iniciarPreparo();
+
+        assertEquals(StatusPedido.EM_PREPARO, pedido.getStatus());
+    }
+
 }
