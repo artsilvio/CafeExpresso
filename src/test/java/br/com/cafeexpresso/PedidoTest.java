@@ -77,4 +77,13 @@ public class PedidoTest {
         });
     }
 
+    @Test
+    void naoDeveAdicionarItemNulo() {
+
+        Pedido pedido = new Pedido();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            pedido.adicionarItem(null);
+        });
+    }
 }
