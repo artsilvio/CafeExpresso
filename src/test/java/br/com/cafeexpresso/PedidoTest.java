@@ -22,4 +22,14 @@ public class PedidoTest {
 
         assertEquals(StatusPedido.PENDENTE, pedido.getStatus());
     }
+
+    @Test
+    void deveAlterarStatusParaPago() {
+
+        Pedido pedido = new Pedido();
+
+        pedido.pagar();
+
+        assertEquals(StatusPedido.PAGO, pedido.getStatus());
+    }
 }
