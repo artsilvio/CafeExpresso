@@ -86,4 +86,18 @@ public class PedidoTest {
             pedido.adicionarItem(null);
         });
     }
+
+    @Test
+    void deveSomarCorretamenteVariosItensDiferentes() {
+        Pedido pedido = new Pedido();
+        Produto cafe = new Produto("Café", 15.0);
+        Produto coxinha = new Produto ("Coxinha", 6.0);
+
+        pedido.adicionarItem(new ItemPedido(cafe, 2));
+        pedido.adicionarItem(new ItemPedido(coxinha, 2));
+
+        assertEquals(42.0, pedido.calcularTotal());
+    }
+
+
 }
