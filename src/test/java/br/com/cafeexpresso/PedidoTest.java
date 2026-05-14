@@ -99,5 +99,15 @@ public class PedidoTest {
         assertEquals(42.0, pedido.calcularTotal());
     }
 
+    @Test
+    void naoDevePermitirPagarPedidoQueJaFoiPago() {
+        Pedido pedido = new Pedido();
+        pedido.pagar();
+
+        assertThrows(IllegalStateException.class, () -> {
+            pedido.pagar();
+        });
+    }
+
 
 }
